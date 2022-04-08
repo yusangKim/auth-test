@@ -18,11 +18,9 @@ export const Header = () => {
     scope: 'openid profile',
   });
   const signInUrl = `${signInEndPoint}?${params}`;
-  console.log(signInUrl);
+  const state = QueryString.stringify(router.pathname);
 
   const handleSignIn = () => {
-    const state = QueryString.stringify(location.pathname);
-    setIsLogin(true);
     console.log(state);
     router.push(`${signInUrl}&${state}`);
   };

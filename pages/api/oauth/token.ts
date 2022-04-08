@@ -30,10 +30,10 @@ const TokenHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const resp = await axios.post(token_endPoint, params, {
+  const getToken = await axios.post(token_endPoint, params, {
     headers,
   });
-  res.status(resp.status).json(resp.data);
+  res.status(getToken.status).json(getToken.data);
 };
 
 export default TokenHandler;

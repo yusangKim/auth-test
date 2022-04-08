@@ -11,11 +11,16 @@ interface Code {
 
 const Callback: NextPage = () => {
   const router = useRouter();
+  //route가 처음 세팅될때도 바귀고 query값이 들어왔을 때도 바귀기 때문에
+  //code가 있을 때만 useEffect를 실행시켜줘야 api 요청을 한 번만 할 수 있다
+  const code = router?.query?.code;
 
   useEffect(() => {
+    if (code) {
+      changeCodeTotoken(router.query.code);
+    }
     console.log(router.query.code);
-    changeCodeTotoken(router.query.code);
-  }, [router]);
+  }, [code]);
 
   const changeCodeTotoken = useCallback(async (code: string | any) => {
     return axios
@@ -32,10 +37,7 @@ const Callback: NextPage = () => {
       })
       .catch(async (e) => {
         console.log(e);
-        // await router.push('/');
       });
-
-    // console.log(data);
   }, []);
 
   return <div>callback page</div>;

@@ -8,10 +8,8 @@ const Home: NextPage = () => {
       <Head>
         <title>auth-test</title>
       </Head>
-      {/* Header */}
       <Header />
-      {/* Body */}
-      <div className="">Home Page</div>
+      <div>Home Page</div>
     </div>
   );
 };
