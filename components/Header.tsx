@@ -18,6 +18,8 @@ export const Header = () => {
     scope: 'openid profile',
   });
   const signInUrl = `${signInEndPoint}?${params}`;
+  //state를 서버에 보내는 이유: 사용자가 가고싶어하는 path를 서버에 저장한다음 로그인에 성공해서 서버에서 다시 query에 state값을 돌려주면
+  //그 값으로 로그인된 유저를 router.push해서 사용성을 높여준다
   const state = QueryString.stringify(router.pathname);
 
   const handleSignIn = () => {
